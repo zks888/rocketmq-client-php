@@ -5,8 +5,8 @@ A Php Client for Apache RocketMQ.
 
 
 # dependence
-* [rocketmq-client-cpp](https://github.com/apache/rocketmq-client-cpp)
-* [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
+* [rocketmq-client-cpp 2.1.0](https://github.com/apache/rocketmq-client-cpp)
+* [PHP-CPP 2.3.0](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
 * php7
 
 ## INSTALL
