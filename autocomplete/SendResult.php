@@ -21,27 +21,59 @@ namespace RocketMQ;
 
 
 class SendResult{
-	public function getMsgId(){
-	}
-
-	public function getOffsetMsgId(){
-	}
-
-	public function getSendStatus(){
-	}
-
-	public function getMessageQueue(){
-	}
-
-	public function getQueueOffset(){
-	}
-
-	public function getRegionId(){
+    /**
+     * @return string
+     */
+    public function getMsgId(){
+        return "";
     }
 
-	public function setRegionId(){
+    /**
+     * @return string
+     */
+    public function getOffsetMsgId(){
+        return "";
     }
 
-	public function getTransactionId(){
+    /**
+     * @return int
+     */
+    public function getSendStatus(){
+        return 0;
+    }
+
+    /**
+     * @return MessageQueue
+     */
+    public function getMessageQueue(){
+        return new MessageQueue;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQueueOffset(){
+        return 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegionId(){
+        return "";
+    }
+
+    /**
+     * @return string
+     */
+    public function setRegionId(){
+        return "";
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransactionId(){
+        return "";
     }
 }
