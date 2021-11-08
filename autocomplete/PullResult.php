@@ -19,19 +19,23 @@
 
 namespace RocketMQ;
 
-class PullResult implements Countable, Iterator{
-	public function getMessage($index){
-	}
+class PullResult
+{
+    public function getCount(){
+    }
 
-	public function getPullStatus(){
-	}
+    public function getMessage($index){
+    }
 
-	public function getNextBeginOffset(){
-	}
+    public function getPullStatus(){
+    }
 
-	public function getMinOffset(){
-	}
+    public function getNextBeginOffset(){
+    }
 
-	public function getMaxOffset(){
-	}
+    public function getMinOffset(){
+    }
+
+    public function getMaxOffset(){
+    }
 }

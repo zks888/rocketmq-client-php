@@ -24,93 +24,193 @@ namespace RocketMQ;
  * Class MessageExt
  * @package RocketMQ
  */
-class MessageExt{
+class MessageExt
+{
+    /**
+     * @var MQMessageExt
+     */
+    private $messageExt;
 
-	public function parseTopicFilterType(int $parseTopicFilterType){}
+    public function __construct($messageExt)
+    {
+        $this->messageExt = $messageExt;
+    }
 
-	/**
-	 * 记录MessageQueue编号，消息会被发送到Topic下的MessageQueue
-	 * @param int $setQueueid
-	 */
-	public function getQueueId(){}
-	public function setQueueId(int $setQueueid){}
+    /**
+     * @param int $filterType
+     */
+    public function parseTopicFilterType(int $filterType){
+    }
 
-	/**
-	 * 消息创建时间，在Producer发送消息时设置
-	 * @param int $bornTimestamp
-	 */
-	public function getBornTimestamp(){}
-	public function setBornTimestamp(int $bornTimestamp){}
+    /**
+     * @return int
+     */
+    public function getQueueId(){
+        return 0;
+    }
 
-	/**
-	 * 记录存储该消息的Broker地址
-	 */
-	public function getStoreHostString(){}
+    /**
+     * 记录MessageQueue编号，消息会被发送到Topic下的MessageQueue
+     *
+     * @param int $queueId
+     * @return void
+     */
+    public function setQueueId(int $queueId){
+    }
 
-	/**
-	 * 消息Id
-	 * @param string $msgId
-	 */
-	public function getMsgId(){}
-	public function setMsgId(string $msgId){}
+    /**
+     * @return int
+     */
+    public function getBornTimestamp(){
+        return 0;
+    }
 
-	/**
-	 *  根据MsgId查询消息
-	 * @param int $offsetMsgId
-	 */
-	public function getOffsetMsgId(){}
-	public function setOffsetMsgId(int $offsetMsgId){}
+    /**
+     * 消息创建时间，在Producer发送消息时设置
+     *
+     * @param int $bornTimestamp
+     * @return void
+     */
+    public function setBornTimestamp(int $bornTimestamp){
+    }
 
-	/**
-	 * 消息内容CRC校验值
-	 * @param int $bodyCRC
-	 */
-	public function getBodyCRC(){}
-	public function setBodyCRC(int $bodyCRC){}
+    /**
+     * 记录存储该消息的Broker地址
+     *
+     * @return string
+     */
+    public function getStoreHostString(){
+        return '';
+    }
 
-	/**
-	 * 记录在ConsumeQueue中的偏移
-	 * @param int $queueOffset
-	 */
-	public function getQueueOffset(){}
-	public function setQueueOffset(int $queueOffset){}
+    /**
+     * @return string
+     */
+    public function getMsgId(){
+        return '';
+    }
 
-	/**
-	 * 记录在Broker中存储偏移
-	 */
-	public function getCommitLogOffset(){}
-	public function setCommitLogOffset(int $physicOffset){}
+    /**
+     * 消息Id
+     *
+     * @param string $msgId
+     * @return void
+     */
+    public function setMsgId(string $msgId){
+    }
 
-	/**
-	 * 记录消息在Broker存盘大小
-	 * @param int $storeSize
-	 */
-	public function getStoreSize(){}
-	public function setStoreSize(int $storeSize){}
+    /**
+     * @return int
+     */
+    public function getOffsetMsgId(){
+        return 0;
+    }
 
-	/**
-	 * 消息重试消费次数
-	 */
-	public function getReconsumeTimes(){}
+    /**
+     *  根据MsgId查询消息
+     * @param int $offsetMsgId
+     * @return void
+     */
+    public function setOffsetMsgId(int $offsetMsgId){
+    }
 
-	/**
-	 * 事务详细相关字段
-	 */
-	public function getPreparedTransactionOffset(){}
-	public function setPreparedTransactionOffset(int $preparedTransactionOffset){}
+    /**
+     * @return int
+     */
+    public function getBodyCRC(){
+        return 0;
+    }
 
-	public function toString(){}
+    /**
+     * 消息内容CRC校验值
+     *
+     * @param int $bodyCRC
+     * @return void
+     */
+    public function setBodyCRC(int $bodyCRC){}
 
-	/**
-	 * 获取message消息对象
-	 */
-	public function getMessage(){}
+    /**
+     * @return int
+     */
+    public function getQueueOffset(){
+        return 0;
+    }
 
-	public function getBornHostString(){}
-	public function setBornHostNameString(){}
+    /**
+     * 记录在ConsumeQueue中的偏移
+     *
+     * @param int $queueOffset
+     * @return void
+     */
+    public function setQueueOffset(int $queueOffset){
+    }
 
-	public function getStoreTimestamp(){}
-	public function setStoreTimestamp(string $storeTimeStamp){}
+    /**
+     * @return int
+     */
+    public function getCommitLogOffset(){
+        return 0;
+    }
 
+    /**
+     * 记录在Broker中存储偏移
+     *
+     * @param int $physicOffset
+     * @return void
+     */
+    public function setCommitLogOffset(int $physicOffset){
+    }
 
+    /**
+     * @return int
+     */
+    public function getStoreSize(){
+        return 0;
+    }
+
+    /**
+     * 记录消息在Broker存盘大小
+     * @param int $storeSize
+     * @return void
+     */
+    public function setStoreSize(int $storeSize){
+    }
+
+    /**
+     * 消息重试消费次数
+     */
+    public function getReconsumeTimes(){
+        return 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPreparedTransactionOffset(){
+        return 0;
+    }
+
+    /**
+     * 事务详细相关字段
+     * @param int $preparedTransactionOffset
+     * @return void
+     */
+    public function setPreparedTransactionOffset(int $preparedTransactionOffset){
+    }
+
+    /**
+     * @return string
+     */
+    public function toString(){
+        return '';
+    }
+
+    /**
+     * 获取message消息对象
+     *
+     * @return Message
+     */
+    public function getMessage(){
+        return new Message('', '', '', '');
+    }
 }

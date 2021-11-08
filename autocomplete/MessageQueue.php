@@ -24,29 +24,58 @@ namespace RocketMQ;
  * Class MessageQueue
  * @package RocketMQ
  */
-class MessageQueue{
+class MessageQueue
+{
+    private $messageQueue;
 
     /**
-     * 获取Topic
+     * MessageQueue constructor.
+     * @param string $topic
+     * @param string $brokerName
+     * @param int $queueId
+     */
+    public function __construct($topic, $brokerName, $queueId){
+        $this->messageQueue = new MQMessageQueue($topic, $brokerName, $queueId);
+    }
+
+    /**
+     * @return string
      */
     public function getTopic(){
-    }
-
-    public function setTopic(){
+        return '';
     }
 
     /**
-     * 
+     * @param string $topic
+     * @return void
+     */
+    public function setTopic($topic){
+    }
+
+    /**
+     * @return string
      */
     public function getBrokerName(){
+        return '';
     }
 
-    public function setBrokerName(){
+    /**
+     * @param string $brokerName
+     */
+    public function setBrokerName($brokerName){
     }
 
+    /**
+     * @return int
+     */
     public function getQueueId(){
+        return 0;
     }
 
-    public function setQueueId(){
+    /**
+     * @param int $queueId
+     * @return void
+     */
+    public function setQueueId($queueId){
     }
 }

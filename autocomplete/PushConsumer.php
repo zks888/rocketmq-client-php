@@ -26,7 +26,6 @@ namespace RocketMQ;
  */
 class PushConsumer{
 
-
 	public function __construct(string $instanceName){}
 
 	/**
