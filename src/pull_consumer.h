@@ -24,7 +24,6 @@
 #include "message_queue.h"
 #include "pull_result.h"
 
-
 class PullConsumer:public Php::Base
 {
 	private:
@@ -100,9 +99,6 @@ class PullConsumer:public Php::Base
 
 		// std::string version()
 		Php::Value version();
-
-		//void setLogPath(const std::string& logPath);
-		void setLogPath(Php::Parameters &logPath);
 };
 
 void registerPullConsumer(Php::Namespace &rocketMQNamespace);

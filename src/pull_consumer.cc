@@ -57,6 +57,27 @@ void PullConsumer::setNamesrvDomain(Php::Parameters &param){
     this->consumer->setNamesrvDomain(namesrv_domain);
 }
 
+Php::Value PullConsumer::getInstanceName(){
+    return this->consumer->getInstanceName();
+}
+
+Php::Value PullConsumer::version(){
+    return this->consumer->version();
+}
+
+Php::Value PullConsumer::getGroupName(){
+    return this->consumer->getGroupName();
+}
+
+void PullConsumer::setGroupName(Php::Parameters &param){
+    std::string groupname = param[0];
+    this->consumer->setGroupName(groupname);
+}
+
+Php::Value PullConsumer::getNameSpace(){
+    return this->consumer->getNameSpace();
+}
+
 Php::Value PullConsumer::getNamesrvAddr(){
     return this->consumer->getNamesrvAddr();
 }
@@ -88,16 +109,6 @@ Php::Value PullConsumer::pull(Php::Parameters &param){
     Php::Value pv(Php::Object(PULL_RESULT_CLASS_NAME, pullResult));
     return pv;
 }
-
-/*
-   void PullConsumer::persistConsumerOffset(){
-   this->consumer->persistConsumerOffset();
-   }
-
-   void PullConsumer::persistConsumerOffsetByResetOffset(){
-   this->consumer->persistConsumerOffsetByResetOffset();
-   }
-   */
 
 Php::Value PullConsumer::pullBlockIfNotFound(Php::Parameters &param){
     Php::Value mq = param[0];
@@ -163,12 +174,13 @@ Php::Value PullConsumer::getLogLevel(){
     return this->consumer->getLogLevel();
 }
 
-void PullConsumer::setLogPath(Php::Parameters &param){
-    this->consumer->setLogPath(param[0]);
+void PullConsumer::setNameSpace(Php::Parameters &param){
+    std::string nameSpace = param[0];
+    this->consumer->setNameSpace(nameSpace);
 }
 
 void PullConsumer::setLogFileSizeAndNum(Php::Parameters &param){
-    this->consumer->setLogFileSizeAndNum(param[0], param[1]);
+    this->consumer->setLogFileSizeAndNum(param[0], (int64_t)param[1]);
 }
 
 void registerPullConsumer(Php::Namespace &rocketMQNamespace){
@@ -223,17 +235,16 @@ void registerPullConsumer(Php::Namespace &rocketMQNamespace){
     pullConsumer.method<&PullConsumer::setLogLevel>("setLogLevel", {Php::ByVal("inputLevel", Php::Type::Numeric),});
     pullConsumer.method<&PullConsumer::getLogLevel>("getLogLevel");
     pullConsumer.method<&PullConsumer::setLogFileSizeAndNum>("setLogFileSizeAndNum", {Php::ByVal("fileNum", Php::Type::Numeric),Php::ByVal("perFileSize", Php::Type::Numeric),});
-   pullConsumer.method<&PullConsumer::setLogPath>("setLogPath", {Php::ByVal("logPath", Php::Type::String),});
 
-   pullConsumer.method<&PullConsumer::setNameSpace>("setNameSpace", {Php::ByVal("nameSpace", Php::Type::String),});
-   pullConsumer.method<&PullConsumer::getNameSpace>("getNameSpace");
+    pullConsumer.method<&PullConsumer::setNameSpace>("setNameSpace", {Php::ByVal("nameSpace", Php::Type::String),});
+    pullConsumer.method<&PullConsumer::getNameSpace>("getNameSpace");
 
-   pullConsumer.method<&PullConsumer::getGroupName>("getGroupName");
-   pullConsumer.method<&PullConsumer::setGroupName>("setGroupName", {Php::ByVal("groupname", Php::Type::String),});
+    pullConsumer.method<&PullConsumer::getGroupName>("getGroupName");
+    pullConsumer.method<&PullConsumer::setGroupName>("setGroupName", {Php::ByVal("groupname", Php::Type::String),});
 
-   pullConsumer.method<&PullConsumer::getInstanceName>("getInstanceName");
+    pullConsumer.method<&PullConsumer::getInstanceName>("getInstanceName");
 
-   pullConsumer.method<&PullConsumer::version>("version");
+    pullConsumer.method<&PullConsumer::version>("version");
 
     rocketMQNamespace.add(pullConsumer);
 }

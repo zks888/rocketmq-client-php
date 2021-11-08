@@ -105,9 +105,6 @@ class PushConsumer : public Php::Base{
         Php::Value getLogLevel();
         //void setLogFileSizeAndNum(int fileNum, long perFileSize);  // perFileSize is MB unit
         void setLogFileSizeAndNum(Php::Parameters &param);
- 
-  	//void setLogPath(const std::string& logPath);
-  	void setLogPath(Php::Parameters &param);
 
   	//const std::string& getGroupName() const;
   	Php::Value getGroupName();

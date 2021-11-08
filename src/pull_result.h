@@ -23,7 +23,7 @@
 #include "message_ext.h"
 #define PULL_RESULT_CLASS_NAME   NAMESPACE_NAME"\\PullResult"
 
-class PullResult: public Php::Base, public Php::Countable, public Php::Traversable
+class PullResult: public Php::Base
 {
     private:
         rocketmq::PullResult result;
@@ -41,9 +41,7 @@ class PullResult: public Php::Base, public Php::Countable, public Php::Traversab
 
         Php::Value getPullStatus();
 
-        virtual long count() override;
-
-        virtual Php::Iterator *getIterator() override;
+        Php::Value getCount();
 };
 
 void registerPullResult(Php::Namespace &rocketMQNamespace);

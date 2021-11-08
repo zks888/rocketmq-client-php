@@ -15,8 +15,7 @@
  *  limitations under the License.
  */
 
-#include "pull_result.h"		
-#include "pull_result_iterator.h"
+#include "pull_result.h"
 
 Php::Value PullResult::getMessage(Php::Parameters &param){
     Php::Value idx_val = param[0];
@@ -49,17 +48,14 @@ Php::Value PullResult::getMaxOffset(){
     return (int64_t)this->result.maxOffset;
 }
 
-long PullResult::count() { 
-    return this->result.msgFoundList.size();
-}
-
-Php::Iterator* PullResult::getIterator(){
-    return new PullResultIterator(this, this->result.msgFoundList);
+Php::Value PullResult::getCount() {
+    return (int64_t)this->result.msgFoundList.size();
 }
 
 void registerPullResult(Php::Namespace &rocketMQNamespace){
     Php::Class<PullResult> pullResultClass("PullResult");
 
+    pullResultClass.method<&PullResult::getCount>("getCount");
     pullResultClass.method<&PullResult::getMessage>("getMessage", { Php::ByVal("index", Php::Type::Numeric), });
     pullResultClass.method<&PullResult::getPullStatus>("getPullStatus");
     pullResultClass.method<&PullResult::getNextBeginOffset>("getNextBeginOffset");

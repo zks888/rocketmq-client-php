@@ -191,7 +191,7 @@ Php::Value PushConsumer::getLogLevel(){
 }
 
 void PushConsumer::setLogFileSizeAndNum(Php::Parameters &param){
-	this->consumer->setLogFileSizeAndNum(param[0], param[1]);
+	this->consumer->setLogFileSizeAndNum(param[0], (int64_t)param[1]);
 }
 
 Php::Value PushConsumer::getConsumeThreadCount(){
@@ -209,11 +209,6 @@ void PushConsumer::setNameSpace(Php::Parameters &param){
 
 Php::Value PushConsumer::version(){
 	return this->consumer->version();
-}
-
-void PushConsumer::setLogPath(Php::Parameters &param){
-	std::string logPath = param[0];
-	this->consumer->setLogPath(logPath);
 }
 
 void PushConsumer::setMaxReconsumeTimes(Php::Parameters &param){
@@ -310,8 +305,6 @@ void registerPushConsumer(Php::Namespace &rocketMQNamespace){
 	pushConsumer.method<&PushConsumer::getNameSpace>("getNameSpace");
 	pushConsumer.method<&PushConsumer::setNameSpace>("setNameSpace", {Php::ByVal("space", Php::Type::Numeric),});
 	pushConsumer.method<&PushConsumer::version>("version");
-
-	pushConsumer.method<&PushConsumer::setLogPath>("setLogPath", {Php::ByVal("logPath", Php::Type::String), });
 
 	pushConsumer.method<&PushConsumer::setMaxReconsumeTimes>("setMaxReconsumeTimes", {Php::ByVal("maxReconsumeTimes", Php::Type::Numeric), });
 	pushConsumer.method<&PushConsumer::getMaxReconsumeTimes>("getMaxReconsumeTimes");
